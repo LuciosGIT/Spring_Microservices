@@ -13,7 +13,7 @@ public class Accounts extends BaseEntity {
 
     @Column(name = "account_number")
     @Id
-    private String accountNumber;
+    private Long accountNumber;
 
     @Column(name = "account_type")
     private String accountType;
