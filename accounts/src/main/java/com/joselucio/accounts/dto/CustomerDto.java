@@ -10,6 +10,6 @@ public class CustomerDto {
 
     private String email;
 
-    private String mobileNmebr;
+    private String mobileNumber;
 
 }
