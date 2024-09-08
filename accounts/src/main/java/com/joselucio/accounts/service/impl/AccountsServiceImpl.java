@@ -1,10 +1,13 @@
 package com.joselucio.accounts.service.impl;
 
 import com.joselucio.accounts.constants.AccountsConstants;
+import com.joselucio.accounts.dto.AccountsDto;
 import com.joselucio.accounts.dto.CustomerDto;
 import com.joselucio.accounts.entity.Accounts;
 import com.joselucio.accounts.entity.Customer;
 import com.joselucio.accounts.exception.CustomerAlreadyExistsException;
+import com.joselucio.accounts.exception.ResourceNotFoundException;
+import com.joselucio.accounts.mapper.AccountsMapper;
 import com.joselucio.accounts.mapper.CustomerMapper;
 import com.joselucio.accounts.repository.AccountsRepository;
 import com.joselucio.accounts.repository.CustomerRepository;
@@ -39,6 +42,22 @@ public class AccountsServiceImpl implements IAccountsService {
         Customer savedCustomer = customerRepository.save(customer);
         Accounts newAccount = createNewAccount(savedCustomer);
         accountsRepository.save(newAccount);
+    }
+
+    @Override
+    public CustomerDto fetchAccount(String mobileNumber) {
+
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                () -> new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber));
+
+        Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "customerId"
+                        , customer.getCustomerId().toString()));
+
+        CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+        customerDto.setAccountsDto(AccountsMapper.mapToAccountsDto(accounts, new AccountsDto()));
+
+        return customerDto;
     }
 
     /**
