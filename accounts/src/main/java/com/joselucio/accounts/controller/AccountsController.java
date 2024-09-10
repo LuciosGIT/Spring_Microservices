@@ -3,9 +3,12 @@ package com.joselucio.accounts.controller;
 
 import com.joselucio.accounts.constants.AccountsConstants;
 import com.joselucio.accounts.dto.CustomerDto;
+import com.joselucio.accounts.dto.ErrorResponseDto;
 import com.joselucio.accounts.dto.ResponseDto;
 import com.joselucio.accounts.service.IAccountsService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -73,7 +76,11 @@ public class AccountsController {
             responseCode = "200",
             description = "HTTP Status OK"
     ),@ApiResponse(responseCode = "500",
-    description = "HTTP Status Internal Server Error")}
+    description = "HTTP Status Internal Server Error",
+    content = @Content(
+            schema = @Schema(implementation = ErrorResponseDto.class)
+    )
+    )}
 )
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateAccountDetails(@Valid @RequestBody CustomerDto customerDto) {
