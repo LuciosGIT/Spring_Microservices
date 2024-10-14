@@ -1,0 +1,10 @@
+build:
+  version: "1.0"
+
+accounts:
+ message: "Welcome to Lúcio's accounts related prod APIs"
+ contactDetails:
+   name: "Example - Product Owner"
+   email: "productowner@gmail.com"
+ onCallSupport:
+  (453) 412-4902
