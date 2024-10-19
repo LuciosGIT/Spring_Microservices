@@ -1,0 +1,10 @@
+build:
+ version: "3.0"
+
+accounts:
+ message: "Welcome to Lúcio's Project accounts related local APIs"
+ contactDetails:
+  name: "José Lúcio - Java Developer"
+  email: "jlucioosjunior@gmail.com"
+ onCallSupport:
+  +55 (81) 97903-6300
