@@ -22,7 +22,32 @@ spring:
     import: "optional:configserver:http://localhost:8071/"
 
 management:
- endpoints:
-  web:
-   exposure:
-    include: "*"
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enable: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: "loans"
+    description: "José Lúcio loans application"
+    version: "1.0.0"
