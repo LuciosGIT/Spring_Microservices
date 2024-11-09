@@ -20,15 +20,28 @@ spring:
     show-sql: true
   config:
    import: "optional:configserver:http://localhost:8071/"
+  cloud:
+   openfeign:
+    circuitbreaker:
+     enabled: true
 
 management:
  endpoints:
   web:
    exposure:
     include: "*"
- endpoint:
-  shutdown:
+ health:
+  readiness-state:
    enabled: true
+  liveness-state:
+   enabled: true
+ endpoint:
+   shutdown:
+     enabled: true
+   health:
+     probes:
+      enabled: true
+
  info:
   env:
    enable: true
@@ -51,3 +64,17 @@ info:
   name: "accounts"
   description: "José Lúcio accounts application"
   version: "1.0.0"
+
+logging:
+  level:
+    com:
+      joselucio:
+        accounts: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
