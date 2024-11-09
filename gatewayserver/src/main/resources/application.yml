@@ -9,6 +9,15 @@ spring:
         locator:
           enabled: false
           lowerCaseServiceId: true
+      httpclient:
+       connect-timeout: 1000
+       response-timeout: 2s
+  data:
+    redis:
+      connect-timeout: 2s
+      host: localhost
+      port: 6379
+      timeout: 1s
 
 management:
   endpoints:
@@ -25,7 +34,7 @@ management:
 info:
   app:
     name: "gatewayserver"
-    description: "Jos� L�cio's Gateway Server Application"
+    description: "José Lúcio's Gateway Server Application"
     version: "1.0.0"
 
 logging:
@@ -33,3 +42,11 @@ logging:
    com:
      joselucio:
        gatewayserver: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
