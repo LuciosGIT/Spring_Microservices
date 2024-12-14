@@ -42,7 +42,7 @@ services:
   alloy:
     image: grafana/alloy:v1.0.0
     volumes:
-      - ./alloy/alloy-local-config.yaml:/etc/alloy/config.alloy
+      - ../observability/alloy/alloy-local-config.yaml:/etc/alloy/config.alloy:ro
       - /var/run/docker.sock:/var/run/docker.sock
     command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
     ports:
@@ -52,6 +52,7 @@ services:
     extends:
       file: common-config.yml
       service: network-deploy-service
+
 
   minio:
     image: minio/minio:RELEASE.2024-05-27T19-17-46Z
