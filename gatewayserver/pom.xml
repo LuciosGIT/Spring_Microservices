@@ -120,7 +120,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>luciosdocker/${project.artifactId}:s11</image>
+						<image>luciosdocker/${project.artifactId}:s12</image>
 					</to>
 				</configuration>
 			</plugin>
