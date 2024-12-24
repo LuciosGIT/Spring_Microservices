@@ -102,9 +102,11 @@ O Apache Kafka é utilizado para implementar comunicação assíncrona entre os 
 ## Como Executar o Projeto
 
 ### Usando Docker Compose
-Execute o comando ```bash
-    docker compose up -d
-    ``` nos diretórios que possuem o arquivo `docker-compose.yml` para iniciar os serviços simultaneamente.
+Execute o comando
+```bash
+  docker compose up -d 
+  ```
+nos diretórios que possuem o arquivo `docker-compose.yml` para iniciar os serviços simultaneamente.
 
 
 
