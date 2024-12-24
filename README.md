@@ -29,6 +29,8 @@ Este repositório contém a implementação de um sistema baseado em microservi�
 ### Docker
 Cada microserviço possui uma **Docker image** para facilitar a conteinerização e portabilidade.
 
+Para encontrar mais informações sobre o versionamento das imagens, sinta-se a vontade para acessar meu DockerHub: https://hub.docker.com/search?q=luciosdocker
+
 - **Comandos importantes:**
   - Construção da imagem:
     ```bash
